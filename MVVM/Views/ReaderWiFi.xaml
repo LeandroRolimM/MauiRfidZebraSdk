@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiRfidSample.MVVM.Views.ReaderWiFi"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout
+            CompressedLayout.IsHeadless="true"
+            Orientation="Vertical"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <StackLayout Padding="0,0,0,0">
+                <Grid
+                    BackgroundColor="#E6E6E6"
+                    ColumnSpacing="0"
+                    RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        x:Name="lbSavedProfiles"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        Text="Saved Network"
+                        TextColor="#8c8c8c"
+                        VerticalTextAlignment="Center" />
+                </Grid>
+                <ListView
+                    x:Name="lvSavedProfiles"
+                    IsVisible="true"
+                    ItemTapped="OnItemTappedSavedProfiles"
+                    ItemsSource="{Binding SavedProfilesList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell
+                                Detail="Tap to share WiFi access from network"
+                                Text="{Binding SavedProfileSSID}"
+                                TextColor="Black" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout Padding="0,0,0,0">
+                <Grid
+                    BackgroundColor="#E6E6E6"
+                    ColumnSpacing="0"
+                    RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        x:Name="lbAvilableProfiles"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,0,0,0"
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        Text="Other Avilable Networks"
+                        TextColor="#8c8c8c"
+                        VerticalTextAlignment="Center" />
+                    <Button
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,0,0"
+                        Clicked="RefreshClicked"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="Refresh"
+                        TextColor="#8c8c8c"
+                        VerticalOptions="Center" />
+                </Grid>
+                <ListView
+                    x:Name="lvAvilableProfiles"
+                    IsVisible="true"
+                    ItemTapped="OnItemTappedAvilableProfiles"
+                    ItemsSource="{Binding AvilableProfilesList}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding AvilableProfileSSID}" TextColor="Black" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
