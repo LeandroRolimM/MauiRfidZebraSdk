@@ -26,10 +26,13 @@ namespace MauiRfidSample.MVVM.ViewModels
 			{
                 new PageDataViewModel(typeof(ReaderList), "Reader List",
                                       "To select the reader from available reader list"),
-                new PageDataViewModel(typeof(InventoryList), "Item inventory",
-									  "Used for Item count or stock count\nPerforms inventory operation"),
-                new PageDataViewModel(typeof(BarcodeScanner), "Barcode Scanner",
-                                      "Used for Scanning Barcode"),
+
+                new PageDataViewModel(typeof(ConferenciaExpedicaoPage), "Conferência",
+                                      "Click para iniciar a conferência de expedição")
+
+
+               // new PageDataViewModel(typeof(InventoryList), "Item inventory", "Used for Item count or stock count\nPerforms inventory operation"),
+                //new PageDataViewModel(typeof(BarcodeScanner), "Barcode Scanner",  "Used for Scanning Barcode"),
 				//new PageDataViewModel(typeof(ReadWriteAccess), "Item commission",
 				//					  "Used for item commissioning, Performs read, write or lock operation on tag memory bank"),
 				//new PageDataViewModel(typeof(LocateTag), "Item search",
@@ -38,10 +41,8 @@ namespace MauiRfidSample.MVVM.ViewModels
                 //                      "Shows the relative proximity of multiple tags"),
            //     new PageDataViewModel(typeof(ViewDemo), "Demo *",
 									  //"Place holder"),
-				new PageDataViewModel(typeof(FirmwareUpdate), "Firmware Update",
-									  "Used for Updating Firmware"),
-				new PageDataViewModel(typeof(TriggerMapping), "Trigger Key Mapping",
-									  "Used for config trigger keys")
+				//new PageDataViewModel(typeof(FirmwareUpdate), "Firmware Update",	"Used for Updating Firmware"),
+				//new PageDataViewModel(typeof(TriggerMapping), "Trigger Key Mapping","Used for config trigger keys")
 				//new PageDataViewModel(typeof(ReaderWiFi), "Reader WiFi Settings",
 				//					  "Used for config WLAN Settings")
 

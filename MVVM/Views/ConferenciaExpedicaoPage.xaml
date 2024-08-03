@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiRfidSample.MVVM.Views.ConferenciaExpedicaoPage"
+             Title="Conferência de Expedição">
+    <StackLayout Padding="10">
+        <Label Text="Ordem de Produção" FontSize="Medium" />
+        <Entry x:Name="OrdemEntry" Placeholder="Insira o número da ordem" />
+        <Button Text="Pesquisar" Clicked="OnPesquisarClicked" />
+    </StackLayout>
+</ContentPage>
