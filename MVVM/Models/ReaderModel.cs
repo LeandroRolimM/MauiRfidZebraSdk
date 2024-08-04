@@ -219,7 +219,7 @@ namespace MauiRfidSample.MVVM.Models
             catch (Exception)
             {
                 serialDeviceNotFound = true;
-                readers.Dispose();
+                //readers.Dispose();
                 readers = null;
             }
 

@@ -7,7 +7,7 @@ namespace MauiRfidSample.MVVM.Views
     public partial class ConferenciaDeExpedicaoPage : ContentPage
     {
         private readonly OrdemRepository _repository;
-
+        private Ordem _ordemSelecionada;
         public ConferenciaDeExpedicaoPage()
         {
             InitializeComponent();
@@ -17,19 +17,19 @@ namespace MauiRfidSample.MVVM.Views
         private void OnPesquisarClicked(object sender, EventArgs e)
         {
             string numeroOrdem = OrdemInput.Text;
-            Ordem ordem = _repository.ObterOrdemPorNumero(numeroOrdem);
+            _ordemSelecionada = _repository.ObterOrdemPorNumero(numeroOrdem);
 
             ResultadoPesquisa.IsVisible = true;
 
-            if (ordem != null)
+            if (_ordemSelecionada != null)
             {
                 MensagemResultado.IsVisible = false;
                 DetalhesOrdem.IsVisible = true;
-                NumeroOrdem.Text = $"Ordem: {ordem.Numero}";
-                ClienteNome.Text = $"Cliente: {ordem.Cliente.Nome}";
-                ClienteCodigo.Text = $"Código Cliente: {ordem.Cliente.Codigo}";
-                DataPrevista.Text = $"Data Prevista: {ordem.DataPrevista.ToString("g")}";
-                Quantidade.Text = $"Quantidade: {ordem.Quantidade}";
+                NumeroOrdem.Text = $"Ordem: {_ordemSelecionada.Numero}";
+                ClienteNome.Text = $"Cliente: {_ordemSelecionada.Cliente.Nome}";
+                ClienteCodigo.Text = $"Código Cliente: {_ordemSelecionada.Cliente.Codigo}";
+                DataPrevista.Text = $"Data Prevista: {_ordemSelecionada.DataPrevista.ToString("g")}";
+                Quantidade.Text = $"Quantidade: {_ordemSelecionada.Quantidade}";
 
             }
             else
@@ -42,8 +42,15 @@ namespace MauiRfidSample.MVVM.Views
 
         private async void OnIniciarConferenciaClicked(object sender, EventArgs e)
         {
-            // await Navigation.PushAsync(new InventoryPage());
-            DisplayAlert("Navegacao","Navegando...","Ok");
+            if (_ordemSelecionada != null)
+            {
+                await Navigation.PushAsync(new ExecucaoConferenciaPage(_ordemSelecionada));
+            }
+            else
+            {
+                await DisplayAlert("Erro", "Nenhuma ordem selecionada.", "OK");
+            }
         }
+
     }
 }

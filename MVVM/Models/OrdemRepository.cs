@@ -14,14 +14,14 @@ namespace MauiRfidSample.MVVM.Models
                     Cliente = new Cliente { Nome = "Cliente A" ,Codigo="1000"}, 
                     Status = "Pendente" ,
                     DataPrevista = DateTime.Now,
-                    EPCs = new List<string>{"2D11C10000000000000145C9", "2D11C10000000000000145C9" },
+                    Epcs = new List<string>{"2D11C10000000000000145C9", "2D11C10000000000000145C9" },
                     Quantidade = 2
                 },
                 new Ordem { Numero = "67890", 
                     Cliente = new Cliente { Nome = "Cliente B",Codigo="2000" }, 
                     Status = "Pendente",
                     DataPrevista = DateTime.Now,
-                    EPCs = new List<string>{"2D11C10000000000000145D1", "2D11C10000000000000145D2","2D11C10000000000000145D3" },
+                    Epcs = new List<string>{"2D11C10000000000000145D1", "2D11C10000000000000145D2","2D11C10000000000000145D3" },
                     Quantidade = 3
                 }
             };
@@ -39,7 +39,7 @@ namespace MauiRfidSample.MVVM.Models
         public Cliente Cliente { get; set; }
         public string Status { get; set; }
         public DateTime DataPrevista { get; set; }
-        public List<string> EPCs { get; set; }
+        public List<string> Epcs { get; set; } = new List<string>();
         public int Quantidade { get; set; }
     }
 

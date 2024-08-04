@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiRfidSample.MVVM.Views.ExecucaoConferenciaPage"
+             Title="Execução da Conferência">
+    <StackLayout Padding="20,0">
+        <Label Text="Execução da Conferência" 
+               FontSize="Large" 
+               HorizontalOptions="Start" Margin="0,20"/>
+        <Label x:Name="OrdemNumero" FontSize="Medium" />
+        <Label x:Name="ClienteNome" FontSize="Medium" />
+        <Label x:Name="Quantidade" FontSize="Medium" />
+        <Label x:Name="Status" FontSize="Medium" />
+        <!-- Adicionar outras informações conforme necessário -->
+        <Button Text="Iniciar Conferência" 
+                Clicked="OnIniciarLeituraEPCsClicked" 
+                FontSize="Medium" 
+                HorizontalOptions="Center"
+                Margin="0,20"/>
+        <!-- Área para exibir contagem de EPCs -->
+        <StackLayout x:Name="ContagemEPCs" IsVisible="False">
+            <Label Text="EPCs Lidos:" FontSize="Medium" />
+            <!-- Adicionar exibição de EPCs lidos aqui -->
+        </StackLayout>
+        <Label Text="EPCs Não Esperados:" FontSize="Medium" Margin="0,10" />
+        <CollectionView x:Name="EpcsNaoEsperados" Margin="0,10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding .}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
