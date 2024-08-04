@@ -1,28 +1,49 @@
+using System;
 using MauiRfidSample.MVVM.Models;
+using MauiRfidSample.MVVM.ViewModels;
 
-namespace MauiRfidSample.MVVM.Views;
-
-public partial class ConferenciaExpedicaoPage : ContentPage
+namespace MauiRfidSample.MVVM.Views
 {
-    private OrdemRepository ordemRepository;
-
-    public ConferenciaExpedicaoPage()
-	{
-		InitializeComponent();
-        ordemRepository = new OrdemRepository();
-    }
-
-    private void OnPesquisarClicked(object sender, EventArgs e)
+    public partial class ConferenciaDeExpedicaoPage : ContentPage
     {
-        string numeroOrdem = OrdemEntry.Text;
-        var ordem = ordemRepository.GetOrdemPorNumero(numeroOrdem);
-        if (ordem != null)
+        private readonly OrdemRepository _repository;
+
+        public ConferenciaDeExpedicaoPage()
         {
-            DisplayAlert("Ordem Encontrada", $"Ordem: {ordem.NumeroOrdem}\nCliente: {ordem.Cliente.Nome}\nStatus: {ordem.Status}", "OK");
+            InitializeComponent();
+            _repository = new OrdemRepository();
         }
-        else
+
+        private void OnPesquisarClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Ordem Não Encontrada", "Nenhuma ordem encontrada com esse número.", "OK");
+            string numeroOrdem = OrdemInput.Text;
+            Ordem ordem = _repository.ObterOrdemPorNumero(numeroOrdem);
+
+            ResultadoPesquisa.IsVisible = true;
+
+            if (ordem != null)
+            {
+                MensagemResultado.IsVisible = false;
+                DetalhesOrdem.IsVisible = true;
+                NumeroOrdem.Text = $"Ordem: {ordem.Numero}";
+                ClienteNome.Text = $"Cliente: {ordem.Cliente.Nome}";
+                ClienteCodigo.Text = $"Código Cliente: {ordem.Cliente.Codigo}";
+                DataPrevista.Text = $"Data Prevista: {ordem.DataPrevista.ToString("g")}";
+                Quantidade.Text = $"Quantidade: {ordem.Quantidade}";
+
+            }
+            else
+            {
+                MensagemResultado.IsVisible = true;
+                DetalhesOrdem.IsVisible = false;
+                MensagemResultado.Text = "Ordem não encontrada.";
+            }
+        }
+
+        private async void OnIniciarConferenciaClicked(object sender, EventArgs e)
+        {
+            // await Navigation.PushAsync(new InventoryPage());
+            DisplayAlert("Navegacao","Navegando...","Ok");
         }
     }
 }

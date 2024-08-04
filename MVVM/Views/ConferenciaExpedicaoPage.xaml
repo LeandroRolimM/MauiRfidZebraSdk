@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiRfidSample.MVVM.Views.ConferenciaExpedicaoPage"
+             x:Class="MauiRfidSample.MVVM.Views.ConferenciaDeExpedicaoPage"
              Title="Conferência de Expedição">
     <StackLayout Padding="10">
-        <Label Text="Ordem de Produção" FontSize="Medium" />
-        <Entry x:Name="OrdemEntry" Placeholder="Insira o número da ordem" />
-        <Button Text="Pesquisar" Clicked="OnPesquisarClicked" />
+        <Label Text="Ordem de Produção" 
+               FontSize="Large" 
+               HorizontalOptions="Center"/>
+        <Entry x:Name="OrdemInput" 
+               Placeholder="Insira o número da ordem" 
+               FontSize="Medium" 
+               HorizontalOptions="FillAndExpand"/>
+        <Button Text="Pesquisar" 
+                Clicked="OnPesquisarClicked" 
+                FontSize="Medium" 
+                HorizontalOptions="Center"/>
+        <StackLayout x:Name="ResultadoPesquisa" 
+                     IsVisible="False"
+                     Margin="10,50,10,10">
+            <!-- Aqui exibiremos os resultados da pesquisa -->
+            <Label x:Name="MensagemResultado" 
+                   FontSize="Medium"
+                   TextColor="Red"
+                   HorizontalOptions="Center"/>
+            <StackLayout x:Name="DetalhesOrdem" IsVisible="False">
+                <Label x:Name="NumeroOrdem" FontSize="Medium" />
+                <Label x:Name="ClienteNome" FontSize="Medium" />
+                <Label x:Name="ClienteCodigo" FontSize="Medium" />
+                <Label x:Name="DataPrevista" FontSize="Medium" />
+                <Label x:Name="Quantidade" FontSize="Medium" />
+                <Button Text="Iniciar Conferência" 
+                        Clicked="OnIniciarConferenciaClicked" 
+                        Margin="0,20,0,0"
+/>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

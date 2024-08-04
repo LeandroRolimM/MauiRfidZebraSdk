@@ -27,7 +27,7 @@ namespace MauiRfidSample.MVVM.ViewModels
                 new PageDataViewModel(typeof(ReaderList), "Reader List",
                                       "To select the reader from available reader list"),
 
-                new PageDataViewModel(typeof(ConferenciaExpedicaoPage), "Conferência",
+                new PageDataViewModel(typeof(ConferenciaDeExpedicaoPage), "Conferência",
                                       "Click para iniciar a conferência de expedição")
 
 
